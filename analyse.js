@@ -14,7 +14,6 @@ for (const option of inputLanguages) {
   `;
 }
 
-
 // allow copying of the outputted code
 outputCodeTextarea.addEventListener("click", async () => {
   const outputCode = outputCodeTextarea.value;
@@ -29,7 +28,7 @@ outputCodeTextarea.addEventListener("click", async () => {
 
 // handle translate button click
 translateBtn.addEventListener("click", async () => {
-  const apiKey = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9qZWN0SWQiOiJwLWI4MGIwZjQ0IiwiaWF0IjoxNzE0NTcxODc1LCJleHAiOjIwMzAxNDc4NzV9.djG9DWQFkKEaY7SYri5YOTkWT4YEcE2stoCAwQSmFlgtHtlnDKDp_fsMsQGOwwt1PwSOFpCXD7hnBHAMdiour8h1HWXG-oGxTZpr9hwknuyeCZeB0k8GIoe_VT1t23DHt7uEizT8602086Ms3HRwQ1kD8oZ6268ToDG914vGKyL6-xS-Ng6pkUeNX9e5uxZE06-WHqMArh9YDvFwKpFe0h_AaeG9RXYAOYPGeJCuMQS0GhgppG6flLAYjl-K12dd73VR82j3-VRu-0sXYM-aKWkgEnxXQyPw8D2529SMy_CRfveDzOdGqxtLrNwI3rdaabzJr8m5_nX8fIYtYu6tXQ';
+  const apiKey = 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9qZWN0SWQiOiJwLWU3MmE2NTdmIiwiaWF0IjoxNzE1NjkwMTY2LCJleHAiOjIwMzEyNjYxNjZ9.cXkf3P-fZaXE5F69RbgocwDqwUfRFeoh_taDx_hF1SueDl8xD2JHs4lNLt7dHkb25ZfhX1j__tJBg95TIYnSX8vCbbAWiwecYk9ziB1Y9vkJ7YfhJ0o3-JXr_vefkVJC4tngQPqwnkCt23mEnACSQeMpubS6NRXrbJkyeMn0ftlXDSVZLE8J6ZnFJ5KmX6qxzEnre_BdG_GY8TaIrVAKubSi5a2pvU7lFCYeBm0Uq_vWAgbvR8stQQuQa4-rIAuMbb2Kax939iSohwPzLNKnrSc1SlOQ2E4OOaa4nvhjUO9TSmEO3Az42vS6n5HKAiXWBTNXoUzTN2yV4zWyH0BXGg';
   const inputLanguage = inputLanguageSelect.value;
   const inputCode = inputCodeTextarea.value;
 
@@ -62,7 +61,7 @@ async function translateCode(apiKey, prompt) {
   myHeaders.append('Content-Type', 'application/json');
 
   const raw = JSON.stringify({
-    "content": prompt
+    "prompt": prompt
   });
 
   const requestOptions = {
@@ -78,7 +77,7 @@ async function translateCode(apiKey, prompt) {
   inputLanguageSelect.setAttribute("disabled", "true");
 
   try {
-    const response = await fetch('https://run.cerebrium.ai/v3/p-b80b0f44/first-project/predict', requestOptions);
+    const response = await fetch('https://api.cortex.cerebrium.ai/v4/p-e72a657f/star/predict', requestOptions);
     if (!response.ok) {
       throw new Error(`API request failed: ${response.status} ${response.statusText}`);
     }
