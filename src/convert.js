@@ -72,7 +72,6 @@ translateBtn.addEventListener("click", async () => {
   const outputLanguage = outputLanguageSelect.value;
   const inputCode = inputCodeTextarea.value;
   const inputPrompt= inputPromptSelect.value;
-
   if (!inputCode) {
     alert("Please enter your input code!");
     return;
@@ -82,8 +81,8 @@ translateBtn.addEventListener("click", async () => {
     alert("Please select different languages!");
     return;
   }
-
-  if (inputPrompt=="Analyse"){
+  console.log(inputPrompt);
+  if (inputPrompt=="convert"){
     const prompt=`Translate the following ${inputLanguage} code to ${outputLanguage}. Maintain the variable names and functionality and ensure all parts of the original code are converted to the target code.${customPrompt}:\n\n${inputCode}\n\n`;
     try {
       await translateCode(apiKey, prompt);
@@ -94,10 +93,10 @@ translateBtn.addEventListener("click", async () => {
       );
     }
   }
-  else if(inputPrompt=="Convert"){
-    const prompt = `Analyze the following ${inputLanguage} code. "Analyze the given code and check for syntax correctness, potential bugs, structural organization, efficiency considerations, security vulnerabilities, adherence to coding standards, documentation clarity, and opportunities for refactoring or optimization. Additionally, evaluate its integration and interoperability with other modules or systems. Provide detailed feedback and recommendations for improvement across these aspects to enhance the code's quality, maintainability, and reliability.${customPrompt}":\n\n${inputCode}\n\n`;
+  else if(inputPrompt=="analyse"){
+    const prompt = `Analyze the following ${inputLanguage} code. "Analyze the given code and check for syntax correctness, potential bugs, structural organization, efficiency considerations, security vulnerabilities, adherence to coding standards, documentation clarity, and opportunities for refactoring or optimization. Additionally, evaluate its integration and interoperability with other modules or systems. Provide detailed feedback and recommendations for improvement across these aspects to enhance the code's quality, maintainability, and reliability."${customPrompt}.:\n\n${inputCode}\n\n`;
     try {
-      await analyseCodeCode(apiKey, prompt);
+      await analyseCode(apiKey, prompt);
     } catch (error) {
       console.error(error);
       alert(
@@ -105,8 +104,8 @@ translateBtn.addEventListener("click", async () => {
       );
     }
   }
-  else if (inputPrompt=="Documentation"){
-    const prompt= `Add comments and documentation for the following ${inputLanguage} code:\n\n${inputCode}\n\n`;
+  else if (inputPrompt=="documentation"){
+    const prompt= `Add comments and documentation for the following ${inputLanguage} code:${customPrompt}\n\n${inputCode}\n\n`;
     try {
       await translateCode(apiKey, prompt);
     } catch (error) {
@@ -116,8 +115,8 @@ translateBtn.addEventListener("click", async () => {
       );
     }
   }
-  else if (inputPrompt=="Debug"){
-    const prompt= `The given ${inputLanguage} code has bugs and errors. "Analyze the given code and check for syntax errors, Logic errors and Runtime errors. Additionally, debug the given errors and display the functional code":\n\n${inputCode}\n\n`;
+  else if (inputPrompt=="debug"){
+    const prompt= `The given ${inputLanguage} code has bugs and errors. "Analyze the given code and check for syntax errors, Logic errors and Runtime errors. Additionally, debug the given errors and display the functional code".${customPrompt}.:\n\n${inputCode}\n\n`;
     try {
       await translateCode(apiKey, prompt);
     } catch (error) {
@@ -127,8 +126,8 @@ translateBtn.addEventListener("click", async () => {
       );
     }
   }
-  else if (inputPrompt=="Debug & Convert"){
-    let prompt= `The given ${inputLanguage} code has bugs and errors. "Analyze the given code and check for syntax errors, Logic errors and Runtime errors. Additionally, debug the given errors and display the functional code":\n\n${inputCode}\n\n`;
+  else if (inputPrompt=="debug & convert"){
+    let prompt= `The given ${inputLanguage} code has bugs and errors. "Analyze the given code and check for syntax errors, Logic errors and Runtime errors. Additionally, debug the given errors and display the functional code".${customPrompt}.:\n\n${inputCode}\n\n`;
     try {
       await translateCode(apiKey, prompt);
     } catch (error) {
@@ -137,28 +136,7 @@ translateBtn.addEventListener("click", async () => {
         "An error occurred while translating the code. Check the console for more details."
       );
     }
-    prompt = `Translate the following ${inputLanguage} code to ${outputLanguage}. Maintain the variable names and functionality and ensure all parts of the original code are converted to the target code.:\n\n${inputCode}\n\n`;
-    try {
-      await translateCode(apiKey, prompt);
-    } catch (error) {
-      console.error(error);
-      alert(
-        "An error occurred while translating the code. Check the console for more details."
-      );
-    }
-  }
-  else if (inputPrompt=="Debug & Convert"){
-    let prompt= `The given ${inputLanguage} code has bugs and errors. "Analyze the given code and check for syntax errors, Logic errors and Runtime errors. Additionally, debug the given errors and display the functional code":\n\n${inputCode}\n\n`;
-    let newPrompt="";
-    try {
-      newPrompt=await translateCode(apiKey, prompt);
-    } catch (error) {
-      console.error(error);
-      alert(
-        "An error occurred while translating the code. Check the console for more details."
-      );
-    }
-    prompt = `Translate the following ${inputLanguage} code to ${outputLanguage}. Maintain the variable names and functionality and ensure all parts of the original code are converted to the target code.:\n\n${newPrompt}\n\n`;
+    prompt = `Translate the following ${inputLanguage} code to ${outputLanguage}. Maintain the variable names and functionality and ensure all parts of the original code are converted to the target code..${customPrompt}.:\n\n${inputCode}\n\n`;
     try {
       await translateCode(apiKey, prompt);
     } catch (error) {
@@ -168,8 +146,8 @@ translateBtn.addEventListener("click", async () => {
       );
     }
   }
-  else if(inputPrompt=="Metadata analysis and improve"){
-    let prompt=`Analyse the given code and describe it and it's purpose and working in detail. List it's Variables, their values and the respective data types. List the control structures and flow of control. List the functions and procedures as well as the different data structures. Highlight the input/outputs. List any error handling methods as well as Libraries used.  Provide detailed feedback and recommendations for improvement across these aspects to enhance the code's quality, maintainability, and reliability:\n\n${inputCode}\n\n`;
+  else if(inputPrompt=="metadata analysis and improve"){
+    let prompt=`Analyse the given code and describe it and it's purpose and working in detail. List it's Variables, their values and the respective data types. List the control structures and flow of control. List the functions and procedures as well as the different data structures. Highlight the input/outputs. List any error handling methods as well as Libraries used.  Provide detailed feedback and recommendations for improvement across these aspects to enhance the code's quality, maintainability, and reliability..${customPrompt}:\n\n${inputCode}\n\n`;
     let newPrompt="";
     try {
       newPrompt=await analyseCode(apiKey, prompt);
@@ -179,7 +157,8 @@ translateBtn.addEventListener("click", async () => {
         "An error occurred while translating the code. Check the console for more details."
       );
     }
-    prompt=`Recreate the given code based on the description and analysis given. Ensure functionality and improve the code's readibility, compactness, efficiency where possible based on the analysis.:\n\n${newPrompt}\n\n`;
+    console.log("New prompt:",newPrompt);
+    prompt=`Recreate the given code based on the description and analysis given in ${outputLanguage}. Ensure functionality and improve the code's readibility, compactness, efficiency where possible based on the analysis.:\n\n${newPrompt}\n\n Recreate the given code based on the description and analysis given in ${outputLanguage}..${customPrompt}`;
     try {
       await translateCode(apiKey, prompt);
     } catch (error) {
@@ -217,18 +196,19 @@ async function translateCode(apiKey, prompt) {
   try {
     const response = await fetch('https://api.cortex.cerebrium.ai/v4/p-e72a657f/star/predict', requestOptions);
     if (!response.ok) {
+      console.log(response.json());
       throw new Error(`API request failed: ${response.status} ${response.statusText}`);
     }
     const data = await response.json();
     const result=data.result.result
-    console.log(result); // Log the entire response
+    //console.log(result); // Log the entire response
     const codeRegex = /```([\s\S]*?)```/; // Regex to extract code within ''' '''
     const extractedCode = codeRegex.exec(result);
-    console.log(extractedCode)
+    console.log(extractedCode);
+    returnValue=extractedCode;
     if (extractedCode && extractedCode.length > 1) {
       console.log(extractedCode[1]); // Log the extracted code
-      outputCodeTextarea.value = extractedCode[1].trim();
-      returnValue = extractedCode[1].trim();} // Set the translated code to the output 
+      outputCodeTextarea.value = extractedCode[1].trim();} // Set the translated code to the output 
   } catch (error) {
     console.error(error);
     alert("An error occurred while fetching data from the API. Check the console for more details.");
@@ -239,6 +219,7 @@ async function translateCode(apiKey, prompt) {
     inputLanguageSelect.removeAttribute("disabled");
     outputLanguageSelect.removeAttribute("disabled");
   }
+  return returnValue;
 }
 
 async function analyseCode(apiKey, prompt) {
@@ -246,6 +227,7 @@ async function analyseCode(apiKey, prompt) {
   myHeaders.append('Authorization', apiKey);
   myHeaders.append('Content-Type', 'application/json');
   let returnValue=""
+
   const raw = JSON.stringify({
     "prompt": prompt
   });
@@ -265,13 +247,13 @@ async function analyseCode(apiKey, prompt) {
   try {
     const response = await fetch('https://api.cortex.cerebrium.ai/v4/p-e72a657f/star/predict', requestOptions);
     if (!response.ok) {
+      console.log(response.json());
       throw new Error(`API request failed: ${response.status} ${response.statusText}`);
     }
     const data = await response.json();
     const result=data.result.result
-    console.log(result);
-    outputCodeTextarea.value = result;
-    returnValue = extractedCode[1].trim(); // Set the analysed code to the output 
+    returnValue=result;
+    outputCodeTextarea.value = result; // Set the analysed code to the output 
   } catch (error) {
     console.error(error);
     alert("An error occurred while fetching data from the API. Check the console for more details.");
@@ -281,4 +263,5 @@ async function analyseCode(apiKey, prompt) {
     translateBtn.removeAttribute("disabled");
     inputLanguageSelect.removeAttribute("disabled");
   }
+  return returnValue;
 }
