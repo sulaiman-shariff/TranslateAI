@@ -11,6 +11,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     >
+    
     <title>TranslateAI</title>
     <style>
       textarea {
@@ -29,7 +30,7 @@
         max-width: 400%; 
         height: 50px; 
         margin-left: -95px;
-        
+        margin-top:-40px;
       }
       .adjust-position {
         margin-top: -40px; 
@@ -39,15 +40,32 @@
    
     
     .text-extractor-adjust{
-      margin-right:-89px;
+      margin-right:-11px;
+      margin-top:-18px;
     }
-    
-    .hidden-file-input{
-      
 
+    .output-adjust{
+      margin-bottom:-5px;
     }
     
-  
+    .button-colour{
+      background-color:rgba(177, 213, 235, 0.979);
+    }
+    
+   .output-bg{
+    background-color:#212121;
+   }
+    
+   .custom-dropdown {
+    appearance: none; /* Removes default appearance */
+    -webkit-appearance: none; /* For WebKit browsers */
+    -moz-appearance: none; /* For Firefox */
+    background-image: url('dropdown-arrow.png'); /* Custom arrow icon */
+    background-repeat: no-repeat;
+    background-position: right center; /* Adjust arrow position */
+    padding-right: 20px; /* Add space for the arrow */
+    background-size: 16px;
+  }
   
     
     
@@ -60,25 +78,31 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmF/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/material-darker.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
   </head>
 
   <body class="bg-gradient-to-r from-sky-900 to-indigo-900 flex flex-col items-center justify-centero w-screen h-screen py-16 text-white font-poppins">
     <!-- header and API Key -->
     <header>
       <div class="flex flex-col gap-1 text-center">
-        <h1 class="text-4xl font-bold">Legacy code migrator</h1>
+        <h1 class="text-4xl font-bold"><span style="color:rgba(231, 217, 152, 0.979)">Legacy code </span>migrator</h1>
       </div>
       <div class="flex flex-col gap-2 items-center w-[420px] m-8">
       </div>
     </header>
-    <div class="adjust-position">
-      <label for="prompt" class="uppercase font-bold font-poppins">Prompt:</label>
-    </div>
+   
+    
     <div>
       <textarea 
       name="prompt"
       id="prompt"
-      placeholder=" Enter your prompt here"
+      placeholder="   Enter your custom instructions here"
       class="rounded-lg text-slate-350 prompt-textarea"
       ></textarea>
     </div>
@@ -86,15 +110,15 @@
     <div>
       <p>​</p>
     </div>
-    <div class="flex flex-col items-center justify-center w-8/12 h-full">
+    <div class="flex flex-col items-center justify-center w-full h-full">
       <label
         for="input-prompt"
-        class="uppercase font-poppins font-bold"
+        class="uppercase font-poppins font-bold "
       >Select type of action:</label>
       <select
         name="input-prompt"
         id="input-prompt"
-        class="py-2 px-4 rounded-lg w-full text-slate-950 transition border-r-8 border-white hover:bg-slate-200 hover:border-slate-200"
+        class="py-2 px-4 rounded-lg w-8/12 text-slate-950 transition border-r-8 border-white hover:bg-slate-200 hover:border-slate-200 custom-dropdown"
       >
         <!-- options will by dynamically loaded -->
       </select>
@@ -103,19 +127,23 @@
         <p>​</p>
       </div>
       <!-- input/output container -->
-      <div class=" w-full h-full flex gap-x-12 mb-8">
+      <div class=" w-full h-full flex gap-x-12 mb-12">
         <div class="flex flex-col gap-3 basis-1/2 " >
+          
           <label
             for="input-language"
             class="uppercase font-bold font-poppins"
-          >Input:</label>
+          >Input: </label>
           <select
             name="input-language"
             id="input-language"
-            class="py-2 px-4 rounded-lg w-full text-slate-950 transition border-r-8 border-white hover:bg-slate-200 hover:border-slate-200"
+            class="py-2 px-4 rounded-lg w-full text-slate-950 transition border-r-8 border-white hover:bg-slate-200 hover:border-slate-200 custom-dropdown"
           >
+          
+          
             <!-- options will by dynamically loaded -->
-          </select>
+          
+          
           <textarea
             name="input-code"
             id="input-code"
@@ -124,7 +152,7 @@
             
           ></textarea>
         </div>
-        <div class="flex flex-col gap-3 basis-1/2 ">
+        <div class="flex flex-col gap-3 basis-1/2 output-adjust">
           <label
             for="output-language"
             class="uppercase font-bold font-poppins"
@@ -132,7 +160,7 @@
           <select
             name="output-language"
             id="output-language"
-            class="py-2 px-4 rounded-lg w-full text-slate-950 transition border-r-8 border-white hover:bg-slate-350 hover:border-slate-200"
+            class="py-2 px-4 rounded-lg w-full text-slate-950 transition border-r-8 border-white hover:bg-slate-350 hover:border-slate-200 custom-dropdown"
           >
             <!-- options will by dynamically loaded -->
           </select>
@@ -140,7 +168,7 @@
             name="output-code"
             id="output-code"
             placeholder="Translated code will show here when the API is complete and can be copied by clicking here"
-            class="p-2 rounded-lg w-full h-full text-slate-350 resize-none font-mono cursor-copy"
+            class="p-2 rounded-lg w-full h-full text-slate-350 resize-none font-mono cursor-copy output-bg"
            
             
             readonly
@@ -148,34 +176,56 @@
         </div>
       </div>
       <div class="text-extractor-adjust">
-        <input type="file" id="file-selector" class="hidden-file-input "></div>
+        <input type="file" id="file-selector" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"></div>
         <div>
           <p>​</p>
         </div>
       <button
         id="translate-btn"
-        class="bg-blue-600 rounded-xl
+        class="button-colour rounded-xl
        p-2 w-6/12 disabled:opacity-30 disabled:cursor-progress"
+       style="color:black"
       >
-        Translate Code
+        GO
       </button>
       
     </main>
 
     <script src="convert.js"></script>
     <script>
-      document.getElementById('file-selector').addEventListener('change', function(event) {
-        const file = event.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            const text = e.target.result;
-            document.getElementById('input-code').value = text;
-          };
-          reader.readAsText(file);
-        }
+      document.addEventListener("DOMContentLoaded", function () {
+        const fileSelector = document.getElementById('file-selector');
+        const inputTextarea = document.getElementById('input-code');
+       
+
+
+        const codeMirrorInstance = CodeMirror.fromTextArea(inputTextarea, {
+          lineNumbers: true,
+          mode: "javascript",
+          theme: "material-darker"
+        });
+  
+        fileSelector.addEventListener('change', function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              const text = e.target.result;
+              inputTextarea.value = text;
+              codeMirrorInstance.setValue(text);
+            };
+            reader.readAsText(file);
+          }
+        });
       });
     </script>
+    <script>
+     
+    
+      
+    </script>
+   
+  
 
   </body>
 
