@@ -1,0 +1,3 @@
+Submission for the EG AI CHALLENGE:
+
+TranslateAI is a web-based platform that employs advanced AI technology to seamlessly translate legacy code written in languages like Delphi, Cobol, and VB into modern programming languages such as Python, Java, C#, and C++. Alongside translation, it offers analysis tools to understand code functionality, optimize performance, and ensure accuracy. With a user-friendly interface and real-time translation capabilities, TranslateAI streamlines the process of code modernization, saving time and resources for organizations while preserving the functionality of their original codebases.

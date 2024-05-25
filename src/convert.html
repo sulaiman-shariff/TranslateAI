@@ -12,6 +12,25 @@
       content="width=device-width, initial-scale=1.0"
     >
     <title>AI Code Translator</title>
+    <style>
+      textarea {
+        background-color: black;
+        color: white;
+        border: 1px solid #333;
+      }
+
+      .fixed-width-textarea {
+        width: 100%; 
+        max-width: 100%; 
+      }
+
+      .prompt-textarea {
+        width: 400%;
+        max-width: 400%; 
+        height: 50px; 
+        margin-left: -95px;
+      }
+    </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -29,12 +48,32 @@
         <h1 class="text-4xl font-bold">AI Code Translator</h1>
       </div>
       <div class="flex flex-col gap-2 items-center w-[420px] m-8">
-        
-        
-        
       </div>
     </header>
-
+    <div>
+      <label for="prompt" class="uppercase font-bold">Prompt:</label>
+    </div>
+    <div>
+      <textarea 
+      name="prompt"
+      id="prompt"
+      placeholder=" Enter your prompt here"
+      class="rounded-lg text-slate-350 prompt-textarea"
+      ></textarea>
+    </div>
+    </div>
+    <div class="flex flex-col items-center justify-center w-8/12 h-full">
+      <label
+        for="input-prompt"
+        class="uppercase font-bold"
+      >Select type of action:</label>
+      <select
+        name="input-prompt"
+        id="input-prompt"
+        class="py-2 px-4 rounded-lg w-full text-slate-950 transition border-r-8 border-white hover:bg-slate-200 hover:border-slate-200"
+      >
+        <!-- options will by dynamically loaded -->
+      </select>
     <main class="flex flex-col items-center justify-center w-8/12 h-full">
       <!-- input/output container -->
       <div class="w-full h-full flex gap-x-4 mb-8">
@@ -54,7 +93,7 @@
             name="input-code"
             id="input-code"
             placeholder="Enter code here"
-            class="p-2 rounded-lg w-full h-full text-slate-950 resize-none font-mono"
+            class="p-2 rounded-lg w-full h-full text-slate-350 resize-none font-mono"
           ></textarea>
         </div>
         <div class="flex flex-col gap-3 basis-1/2">
@@ -74,6 +113,8 @@
             id="output-code"
             placeholder="Translated code will show here when the API is complete and can be copied by clicking here"
             class="p-2 rounded-lg w-full h-full text-slate-950 resize-none font-mono cursor-copy"
+           
+            
             readonly
           ></textarea>
         </div>
