@@ -29,7 +29,11 @@
         max-width: 400%; 
         height: 50px; 
         margin-left: -95px;
+        
       }
+      .adjust-position {
+        margin-top: -40px; 
+    }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -50,7 +54,7 @@
       <div class="flex flex-col gap-2 items-center w-[420px] m-8">
       </div>
     </header>
-    <div>
+    <div class="adjust-position">
       <label for="prompt" class="uppercase font-bold">Prompt:</label>
     </div>
     <div>
@@ -61,6 +65,9 @@
       class="rounded-lg text-slate-350 prompt-textarea"
       ></textarea>
     </div>
+    </div>
+    <div>
+      <p>​</p>
     </div>
     <div class="flex flex-col items-center justify-center w-8/12 h-full">
       <label
@@ -75,6 +82,9 @@
         <!-- options will by dynamically loaded -->
       </select>
     <main class="flex flex-col items-center justify-center w-8/12 h-full">
+      <div>
+        <p>​</p>
+      </div>
       <!-- input/output container -->
       <div class="w-full h-full flex gap-x-4 mb-8">
         <div class="flex flex-col gap-3 basis-1/2">
@@ -104,7 +114,7 @@
           <select
             name="output-language"
             id="output-language"
-            class="py-2 px-4 rounded-lg w-full text-slate-950 transition border-r-8 border-white hover:bg-slate-200 hover:border-slate-200"
+            class="py-2 px-4 rounded-lg w-full text-slate-950 transition border-r-8 border-white hover:bg-slate-350 hover:border-slate-200"
           >
             <!-- options will by dynamically loaded -->
           </select>
