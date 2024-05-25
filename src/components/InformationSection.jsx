@@ -28,7 +28,7 @@ const InformationSection = () => {
         </div>
         <h2 className="font-poppins font-semibold text-[32px] text-white mb-4">Standard user($100/m)</h2>
         <p className={`${styles.paragraph} text-white max-w-[470px]`}>
-          Providing analysis and conversion tools with added features (limited to 10k tokens).
+          Providing analysis and conversion tools with added features upto 10k Lines of code!
         </p>
       </div>
 
@@ -42,7 +42,7 @@ const InformationSection = () => {
         </div>
         <h2 className="font-poppins font-semibold text-[32px] text-white mb-4">Enterprise user($1000/m)</h2>
         <p className={`${styles.paragraph} text-white max-w-[470px]`}>
-          LOC limit increased to 110k with dedicated support.
+          Upto 110k Lines of code with dedicated support.
         </p>
       </div>
 
@@ -56,7 +56,7 @@ const InformationSection = () => {
         </div>
         <h2 className="font-poppins font-semibold text-[32px] text-white mb-4">Custom pricing</h2>
         <p className={`${styles.paragraph} text-white max-w-[470px]`}>
-          Charging around $13-21 per LOC* for end to end production.
+          Get in touch with us to discuss custom pricing!
         </p>
       </div>
 
