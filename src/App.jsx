@@ -1,6 +1,7 @@
 
 import styles from "./style";
 import { Banner, Footer, Navbar, Hero,  } from "./components";
+import InformationSection from "./components/InformationSection";
 
 
 const App = () => (
@@ -15,6 +16,9 @@ const App = () => (
       <div className={`${styles.boxWidth}`}>
         <Hero />
       </div>
+    </div>
+    <div>
+      <InformationSection />
     </div>
     
     <div className={`bg-primary ${styles.paddingX} ${styles.flexCenter}`}>
