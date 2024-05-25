@@ -1,7 +1,7 @@
 
 import styles from "../style";
 import { discount, robot } from "../assets";
-import GetStarted from "./GetStarted";
+
 
 const Hero = () => {
   return (
@@ -20,9 +20,7 @@ const Hero = () => {
             TranslateAI: <br className="sm:block hidden" />{" "}
             <span className="text-gradient">The next generation</span>{" "}
           </h1>
-          <div className="ss:flex hidden md:mr-4 mr-0">
-            <GetStarted />
-          </div>
+         
         </div>
 
         <h1 className="font-poppins font-semibold ss:text-[68px] text-[52px] text-white ss:leading-[100.8px] leading-[75px] w-full">
@@ -43,9 +41,7 @@ const Hero = () => {
         {/* gradient end */}
       </div>
 
-      <div className={`ss:hidden ${styles.flexCenter}`}>
-        <GetStarted />
-      </div>
+      
     </section>
   );
 };
