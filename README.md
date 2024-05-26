@@ -1,3 +1,25 @@
-Submission for the EG AI CHALLENGE:
+# TranslateAI: Code Translation, Analysis, and Debugging
 
-TranslateAI is a web-based platform that employs advanced AI technology to seamlessly translate legacy code written in languages like Delphi, Cobol, and VB into modern programming languages such as Python, Java, C#, and C++. Alongside translation, it offers analysis tools to understand code functionality, optimize performance, and ensure accuracy. With a user-friendly interface and real-time translation capabilities, TranslateAI streamlines the process of code modernization, saving time and resources for organizations while preserving the functionality of their original codebases.
+Welcome to TranslateAI! Transform your legacy codebases into modern languages with ease. Our platform uses advanced AI to translate, analyze, and debug your code efficiently.
+
+## Features
+
+### AI-Powered Code Translation
+- **Legacy to Modern**: Convert Delphi, Cobol, VB, and more to Python, Java, C#, and C++.
+- **Advanced AI**: Preserve original functionality while translating code.
+
+### Integrated Analysis Tools
+- **Code Understanding**: Understand and optimize code with AI-driven analysis.
+- **Performance Optimization**: Improve code performance during translation.
+
+### Robust Debugging Tools
+- **Issue Identification**: Find and fix issues in your legacy code.
+- **Efficient Debugging**: Use comprehensive tools to ensure code reliability.
+
+### Data Privacy
+- **Secure Transmission**: Protect your data during translation.
+- **Confidential Storage**: Keep your data private and secure.
+
+### Functionality Preservation
+- **Seamless Transition**: Maintain original code functionality.
+- **Consistency**: Reliable and consistent code conversion.
